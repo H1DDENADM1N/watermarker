@@ -127,18 +127,18 @@ def main():
     parse = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
     parse.add_argument("-f", "--file", type=str,
                        help="image file path or directory")
-    parse.add_argument("-m", "--mark", type=str, help="watermark content")
+    parse.add_argument("-m", "--mark", default="H1DDENADM1N@GitHub", type=str, help="watermark content")
     parse.add_argument("-o", "--out", default="./output",
                        help="image output directory, default is ./output")
-    parse.add_argument("-c", "--color", default="#8B8B1B", type=str,
-                       help="text color like '#000000', default is #8B8B1B")
+    parse.add_argument("-c", "--color", default="#00B294", type=str,
+                       help="text color like '#000000', default is #00B294")
     parse.add_argument("-s", "--space", default=75, type=int,
                        help="space between watermarks, default is 75")
     parse.add_argument("-a", "--angle", default=30, type=int,
                        help="rotate angle of watermarks, default is 30")
-    parse.add_argument("--font-family", default="./font/青鸟华光简琥珀.ttf", type=str,
+    parse.add_argument("--font-family", default="./font/SmileySans-Oblique.ttf", type=str,
                        help=textwrap.dedent('''\
-                       font family of text, default is './font/青鸟华光简琥珀.ttf'
+                       font family of text, default is './font/SmileySans-Oblique.ttf'
                        using font in system just by font file name
                        for example 'PingFang.ttc', which is default installed on macOS
                        '''))
@@ -153,11 +153,11 @@ def main():
                        help="font size of text, default is 50")
     parse.add_argument("--opacity", default=0.15, type=float,
                        help="opacity of watermarks, default is 0.15")
-    parse.add_argument("--quality", default=80, type=int,
-                       help="quality of output images, default is 80")
+    parse.add_argument("--quality", default=100, type=int,
+                       help="quality of output images, default is 100")
 
     args = parse.parse_args()
-
+    print(args)
     if isinstance(args.mark, str) and sys.version_info[0] < 3:
         args.mark = args.mark.decode("utf-8")
 
