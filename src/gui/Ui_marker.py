@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'marker.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.2
+## Created by: Qt User Interface Compiler version 6.6.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -18,21 +18,21 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
     QLineEdit, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QSizePolicy, QSlider, QSpinBox,
-    QStatusBar, QToolBar, QVBoxLayout, QWidget)
+    QSizePolicy, QSlider, QSpinBox, QStatusBar,
+    QToolBar, QVBoxLayout, QWidget)
 
-class Ui_MainWindow_pic_marker(object):
-    def setupUi(self, MainWindow_pic_marker):
-        if not MainWindow_pic_marker.objectName():
-            MainWindow_pic_marker.setObjectName(u"MainWindow_pic_marker")
-        MainWindow_pic_marker.resize(461, 749)
-        self.action_open = QAction(MainWindow_pic_marker)
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(522, 721)
+        self.action_open = QAction(MainWindow)
         self.action_open.setObjectName(u"action_open")
-        self.action_save = QAction(MainWindow_pic_marker)
+        self.action_save = QAction(MainWindow)
         self.action_save.setObjectName(u"action_save")
-        self.action_save_as = QAction(MainWindow_pic_marker)
+        self.action_save_as = QAction(MainWindow)
         self.action_save_as.setObjectName(u"action_save_as")
-        self.centralwidget = QWidget(MainWindow_pic_marker)
+        self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_4 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
@@ -52,11 +52,6 @@ class Ui_MainWindow_pic_marker(object):
 
 
         self.verticalLayout_4.addWidget(self.groupBox_pic)
-
-        self.pushButton_generate = QPushButton(self.centralwidget)
-        self.pushButton_generate.setObjectName(u"pushButton_generate")
-
-        self.verticalLayout_4.addWidget(self.pushButton_generate)
 
         self.groupBox_config = QGroupBox(self.centralwidget)
         self.groupBox_config.setObjectName(u"groupBox_config")
@@ -230,19 +225,19 @@ class Ui_MainWindow_pic_marker(object):
 
         self.verticalLayout_4.addWidget(self.groupBox_config)
 
-        MainWindow_pic_marker.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(MainWindow_pic_marker)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 461, 22))
+        self.menubar.setGeometry(QRect(0, 0, 522, 21))
         self.menu_F = QMenu(self.menubar)
         self.menu_F.setObjectName(u"menu_F")
-        MainWindow_pic_marker.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(MainWindow_pic_marker)
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
-        MainWindow_pic_marker.setStatusBar(self.statusbar)
-        self.toolBar = QToolBar(MainWindow_pic_marker)
+        MainWindow.setStatusBar(self.statusbar)
+        self.toolBar = QToolBar(MainWindow)
         self.toolBar.setObjectName(u"toolBar")
-        MainWindow_pic_marker.addToolBar(Qt.TopToolBarArea, self.toolBar)
+        MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
 
         self.menubar.addAction(self.menu_F.menuAction())
         self.menu_F.addAction(self.action_open)
@@ -252,45 +247,41 @@ class Ui_MainWindow_pic_marker(object):
         self.toolBar.addAction(self.action_save)
         self.toolBar.addAction(self.action_save_as)
 
-        self.retranslateUi(MainWindow_pic_marker)
+        self.retranslateUi(MainWindow)
 
-        QMetaObject.connectSlotsByName(MainWindow_pic_marker)
+        QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
-    def retranslateUi(self, MainWindow_pic_marker):
-        MainWindow_pic_marker.setWindowTitle(QCoreApplication.translate("MainWindow_pic_marker", u"\u56fe\u7247\u6253\u6c34\u5370", None))
-        self.action_open.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u6253\u5f00(O)", None))
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u56fe\u7247\u6253\u6c34\u5370", None))
+        self.action_open.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00(O)", None))
 #if QT_CONFIG(shortcut)
-        self.action_open.setShortcut(QCoreApplication.translate("MainWindow_pic_marker", u"Ctrl+O", None))
+        self.action_open.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+O", None))
 #endif // QT_CONFIG(shortcut)
-        self.action_save.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u4fdd\u5b58(S)", None))
+        self.action_save.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58(S)", None))
 #if QT_CONFIG(shortcut)
-        self.action_save.setShortcut(QCoreApplication.translate("MainWindow_pic_marker", u"Ctrl+S", None))
+        self.action_save.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+S", None))
 #endif // QT_CONFIG(shortcut)
-        self.action_save_as.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u53e6\u5b58\u4e3a", None))
+        self.action_save_as.setText(QCoreApplication.translate("MainWindow", u"\u53e6\u5b58\u4e3a", None))
 #if QT_CONFIG(shortcut)
-        self.action_save_as.setShortcut(QCoreApplication.translate("MainWindow_pic_marker", u"Ctrl+Shift+S", None))
+        self.action_save_as.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Shift+S", None))
 #endif // QT_CONFIG(shortcut)
-        self.groupBox_pic.setTitle(QCoreApplication.translate("MainWindow_pic_marker", u"\u56fe\u7247\u6587\u4ef6\u540d", None))
+        self.groupBox_pic.setTitle(QCoreApplication.translate("MainWindow", u"\u56fe\u7247\u6587\u4ef6\u540d", None))
         self.label_pic.setText("")
-        self.pushButton_generate.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u751f\u6210(G)", None))
-#if QT_CONFIG(shortcut)
-        self.pushButton_generate.setShortcut(QCoreApplication.translate("MainWindow_pic_marker", u"Ctrl+G", None))
-#endif // QT_CONFIG(shortcut)
-        self.groupBox_config.setTitle(QCoreApplication.translate("MainWindow_pic_marker", u"\u53c2\u6570\u8bbe\u7f6e", None))
-        self.label_text.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u6c34\u5370\u5185\u5bb9", None))
-        self.lineEdit_text.setText(QCoreApplication.translate("MainWindow_pic_marker", u"H1DDENADM1N@GitHub", None))
-        self.lineEdit_text.setPlaceholderText(QCoreApplication.translate("MainWindow_pic_marker", u"H1DDENADM1N@GitHub", None))
-        self.label_size.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u5b57\u4f53\u5927\u5c0f", None))
-        self.label_space.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u6c34\u5370\u95f4\u8ddd", None))
-        self.groupBox_color.setTitle(QCoreApplication.translate("MainWindow_pic_marker", u"\u6c34\u5370\u989c\u8272", None))
-        self.label_red.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u7ea2", None))
-        self.label_green.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u7eff", None))
-        self.label_blue.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u84dd", None))
-        self.label_opacity.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u4e0d\u900f\u660e\u5ea6", None))
-        self.label_angle.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u6c34\u5370\u65cb\u8f6c\u89d2\u5ea6", None))
-        self.label_quality.setText(QCoreApplication.translate("MainWindow_pic_marker", u"\u8f93\u51fa\u56fe\u50cf\u8d28\u91cf", None))
-        self.menu_F.setTitle(QCoreApplication.translate("MainWindow_pic_marker", u"\u6587\u4ef6", None))
-        self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow_pic_marker", u"toolBar", None))
+        self.groupBox_config.setTitle(QCoreApplication.translate("MainWindow", u"\u53c2\u6570\u8bbe\u7f6e", None))
+        self.label_text.setText(QCoreApplication.translate("MainWindow", u"\u6c34\u5370\u5185\u5bb9", None))
+        self.lineEdit_text.setText(QCoreApplication.translate("MainWindow", u"H1DDENADM1N@GitHub", None))
+        self.lineEdit_text.setPlaceholderText(QCoreApplication.translate("MainWindow", u"H1DDENADM1N@GitHub", None))
+        self.label_size.setText(QCoreApplication.translate("MainWindow", u"\u5b57\u4f53\u5927\u5c0f", None))
+        self.label_space.setText(QCoreApplication.translate("MainWindow", u"\u6c34\u5370\u95f4\u8ddd", None))
+        self.groupBox_color.setTitle(QCoreApplication.translate("MainWindow", u"\u6c34\u5370\u989c\u8272", None))
+        self.label_red.setText(QCoreApplication.translate("MainWindow", u"\u7ea2", None))
+        self.label_green.setText(QCoreApplication.translate("MainWindow", u"\u7eff", None))
+        self.label_blue.setText(QCoreApplication.translate("MainWindow", u"\u84dd", None))
+        self.label_opacity.setText(QCoreApplication.translate("MainWindow", u"\u4e0d\u900f\u660e\u5ea6", None))
+        self.label_angle.setText(QCoreApplication.translate("MainWindow", u"\u6c34\u5370\u65cb\u8f6c\u89d2\u5ea6", None))
+        self.label_quality.setText(QCoreApplication.translate("MainWindow", u"\u8f93\u51fa\u56fe\u50cf\u8d28\u91cf", None))
+        self.menu_F.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6", None))
+        self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
 
