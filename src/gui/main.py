@@ -167,7 +167,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.output_pic = None
             return
 
-        if self.temp_pic.exists():
+        if self.blind_temp_pic.exists():
+            shutil.copy(self.blind_temp_pic, self.output_pic)
+            print(f"保存文件：{self.output_pic}")
+        elif self.temp_pic.exists():
             if self.output_pic.exists():
                 self.output_pic.unlink()
             shutil.copy(self.temp_pic, self.output_pic)
