@@ -7,6 +7,7 @@ from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
 
 from ..watermarker import marker
+from ..watermarker.my_blind_marker import MyBlindMarker
 from .Ui_marker import Ui_MainWindow
 
 
@@ -26,9 +27,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.input_pic: Path = None
         self.output_pic: Path = None
         self.temp_pic: Path = None
+        self.blind_temp_pic: Path = None
 
         self.checkBox_text.setDisabled(True)  # 打开图片后才允许编辑文字水印选项
         self.disable_text_options()  # 打开图片后才允许编辑文字水印选项
+        self.checkBox_blind.setDisabled(True)  # 打开图片后才允许编辑盲水印选项
+        self.disable_blind_options()  # 打开图片后才允许编辑盲水印选项
 
         self.setup_signals()
 
@@ -37,6 +41,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.action_save.triggered.connect(self.save_pic)
         self.action_save_as.triggered.connect(self.save_pic_as)
         self.checkBox_text.stateChanged.connect(self.on_checkBox_text_changed)
+        self.checkBox_blind.stateChanged.connect(self.on_checkBox_blind_changed)
 
         self.lineEdit_text.textChanged.connect(self.generate_temp_pic)
         self.spinBox_size.valueChanged.connect(self.generate_temp_pic)
@@ -47,6 +52,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.horizontalSlider_opacity.valueChanged.connect(self.generate_temp_pic)
         self.horizontalSlider_angle.valueChanged.connect(self.generate_temp_pic)
         self.horizontalSlider_quality.valueChanged.connect(self.generate_temp_pic)
+
+        self.lineEdit_blind_text.textChanged.connect(self.generate_blind_temp_pic)
 
     def enable_text_options(self):
         self.lineEdit_text.setEnabled(True)
@@ -70,6 +77,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.horizontalSlider_angle.setDisabled(True)
         self.horizontalSlider_quality.setDisabled(True)
 
+    def enable_blind_options(self):
+        self.lineEdit_blind_text.setEnabled(True)
+
+    def disable_blind_options(self):
+        self.lineEdit_blind_text.setDisabled(True)
+
     def on_checkBox_text_changed(self):
         if self.checkBox_text.isChecked():
             self.enable_text_options()
@@ -77,6 +90,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self.disable_text_options()
             self.replace_temp_pic_with_input_pic()
+
+        if self.checkBox_blind.isChecked():
+            self.checkBox_blind.setChecked(False)
+            self.checkBox_blind.setChecked(True)
+
+    def on_checkBox_blind_changed(self):
+        if self.checkBox_blind.isChecked():
+            self.enable_blind_options()
+            self.generate_blind_temp_pic()
+        else:
+            self.disable_blind_options()
+            self.replace_blind_temp_pic_with_temp_pic()
+            self.lineEdit_decode_blind_text.clear()
+
+    def replace_blind_temp_pic_with_temp_pic(self):
+        if self.blind_temp_pic.exists():
+            self.blind_temp_pic.unlink()
+        self.label_pic.setPixmap(QPixmap(str(self.temp_pic)))
 
     def replace_temp_pic_with_input_pic(self):
         shutil.copy(self.input_pic, self.temp_pic)
@@ -101,13 +132,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.enable_text_options()
         self.generate_temp_pic()
 
+        self.checkBox_blind.setEnabled(True)
+        self.enable_blind_options()
+        self.generate_blind_temp_pic()
+
     def save_pic(self):
         self.output_pic = PathsConfig.OUTPUT_PATH / self.input_pic.name
 
         if not self.output_pic.parent.exists():
             self.output_pic.parent.mkdir(parents=True)
 
-        if self.temp_pic.exists():
+        if self.output_pic.exists():
+            self.output_pic.unlink()
+
+        if self.blind_temp_pic.exists():
+            shutil.copy(self.blind_temp_pic, self.output_pic)
+            print(f"保存文件：{self.output_pic}")
+        elif self.temp_pic.exists():
             if self.output_pic.exists():
                 self.output_pic.unlink()
             shutil.copy(self.temp_pic, self.output_pic)
@@ -148,6 +189,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         color = "#{:02x}{:02x}{:02x}".format(red, green, blue)
         parse = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
         parse.add_argument("--file", default=self.input_pic, type=str)
+
         parse.add_argument("--mark", default=self.lineEdit_text.text(), type=str)
         parse.add_argument("--out", default=str(PathsConfig.TEMP_PATH))
         parse.add_argument("--color", default=color, type=str)
@@ -180,6 +222,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.label_pic.setPixmap(QPixmap(str(self.temp_pic)))
         else:
             print("生成临时文件失败")
+
+    def generate_blind_temp_pic(self):
+        self.blind_temp_pic = (
+            self.temp_pic.parent / f"{self.temp_pic.name}_blind{self.temp_pic.suffix}"
+        )
+        print(f"盲水印临时文件：{self.blind_temp_pic}")
+        mbm = MyBlindMarker()
+        mbm.add_blind_mark(
+            self.temp_pic, self.blind_temp_pic, self.lineEdit_blind_text.text()
+        )
+
+        self.lineEdit_decode_blind_text.setText(
+            mbm.decode_blind_mark(self.blind_temp_pic)
+        )
+
+        if self.blind_temp_pic.exists():
+            self.label_pic.setPixmap(QPixmap(str(self.blind_temp_pic)))
+        else:
+            print("生成盲水印临时文件失败")
 
 
 def main():
