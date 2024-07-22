@@ -14,7 +14,7 @@
    <string>图片打水印</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_4">
+   <layout class="QVBoxLayout" name="verticalLayout_6">
     <item>
      <widget class="QGroupBox" name="groupBox_pic">
       <property name="title">
@@ -38,231 +38,335 @@
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="groupBox_config">
-      <property name="title">
-       <string>参数设置</string>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_text">
-         <item>
-          <widget class="QLabel" name="label_text">
-           <property name="text">
-            <string>水印内容</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_text">
-           <property name="text">
-            <string>H1DDENADM1N@GitHub</string>
-           </property>
-           <property name="placeholderText">
-            <string>H1DDENADM1N@GitHub</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_font">
-         <item>
-          <widget class="QLabel" name="label_size">
-           <property name="text">
-            <string>字体大小</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="spinBox_size">
-           <property name="maximum">
-            <number>999</number>
-           </property>
-           <property name="value">
-            <number>50</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_space">
-         <item>
-          <widget class="QLabel" name="label_space">
-           <property name="text">
-            <string>水印间距</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="spinBox_space">
-           <property name="maximum">
-            <number>999</number>
-           </property>
-           <property name="value">
-            <number>75</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_color">
-         <property name="title">
-          <string>水印颜色</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_red">
-            <item>
-             <widget class="QLabel" name="label_red">
-              <property name="text">
-               <string>红</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSlider" name="horizontalSlider_red">
-              <property name="maximum">
-               <number>255</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_green">
-            <item>
-             <widget class="QLabel" name="label_green">
-              <property name="text">
-               <string>绿</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSlider" name="horizontalSlider_green">
-              <property name="maximum">
-               <number>255</number>
-              </property>
-              <property name="value">
-               <number>178</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_blue">
-            <item>
-             <widget class="QLabel" name="label_blue">
-              <property name="text">
-               <string>蓝</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSlider" name="horizontalSlider_blue">
-              <property name="maximum">
-               <number>255</number>
-              </property>
-              <property name="value">
-               <number>148</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_opacity">
-            <item>
-             <widget class="QLabel" name="label_opacity">
-              <property name="text">
-               <string>不透明度</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSlider" name="horizontalSlider_opacity">
-              <property name="maximum">
-               <number>100</number>
-              </property>
-              <property name="value">
-               <number>15</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="invertedAppearance">
-               <bool>false</bool>
-              </property>
-              <property name="invertedControls">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_angle">
-         <item>
-          <widget class="QLabel" name="label_angle">
-           <property name="text">
-            <string>水印旋转角度</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSlider" name="horizontalSlider_angle">
-           <property name="maximum">
-            <number>360</number>
-           </property>
-           <property name="value">
-            <number>30</number>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_quality">
-         <item>
-          <widget class="QLabel" name="label_quality">
-           <property name="text">
-            <string>输出图像质量</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSlider" name="horizontalSlider_quality">
-           <property name="maximum">
-            <number>100</number>
-           </property>
-           <property name="value">
-            <number>100</number>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="Text">
+       <attribute name="title">
+        <string>Text</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QCheckBox" name="checkBox_text">
+          <property name="text">
+           <string>使用文字水印</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_config">
+          <property name="title">
+           <string>文字水印 参数设置</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_text">
+             <item>
+              <widget class="QLabel" name="label_text">
+               <property name="text">
+                <string>水印内容</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_text">
+               <property name="text">
+                <string>H1DDENADM1N@GitHub</string>
+               </property>
+               <property name="placeholderText">
+                <string>H1DDENADM1N@GitHub</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_font">
+             <item>
+              <widget class="QLabel" name="label_size">
+               <property name="text">
+                <string>字体大小</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_size">
+               <property name="maximum">
+                <number>999</number>
+               </property>
+               <property name="value">
+                <number>50</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_space">
+             <item>
+              <widget class="QLabel" name="label_space">
+               <property name="text">
+                <string>水印间距</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_space">
+               <property name="maximum">
+                <number>999</number>
+               </property>
+               <property name="value">
+                <number>75</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_color">
+             <property name="title">
+              <string>水印颜色</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_red">
+                <item>
+                 <widget class="QLabel" name="label_red">
+                  <property name="text">
+                   <string>红</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="horizontalSlider_red">
+                  <property name="maximum">
+                   <number>255</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_green">
+                <item>
+                 <widget class="QLabel" name="label_green">
+                  <property name="text">
+                   <string>绿</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="horizontalSlider_green">
+                  <property name="maximum">
+                   <number>255</number>
+                  </property>
+                  <property name="value">
+                   <number>178</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_blue">
+                <item>
+                 <widget class="QLabel" name="label_blue">
+                  <property name="text">
+                   <string>蓝</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="horizontalSlider_blue">
+                  <property name="maximum">
+                   <number>255</number>
+                  </property>
+                  <property name="value">
+                   <number>148</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_opacity">
+                <item>
+                 <widget class="QLabel" name="label_opacity">
+                  <property name="text">
+                   <string>不透明度</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="horizontalSlider_opacity">
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                  <property name="value">
+                   <number>15</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="invertedAppearance">
+                   <bool>false</bool>
+                  </property>
+                  <property name="invertedControls">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_angle">
+             <item>
+              <widget class="QLabel" name="label_angle">
+               <property name="text">
+                <string>水印旋转角度</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="horizontalSlider_angle">
+               <property name="maximum">
+                <number>360</number>
+               </property>
+               <property name="value">
+                <number>30</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_quality">
+             <item>
+              <widget class="QLabel" name="label_quality">
+               <property name="text">
+                <string>输出图像质量</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="horizontalSlider_quality">
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="value">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="Blind">
+       <attribute name="title">
+        <string>Blind</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QCheckBox" name="checkBox_blind">
+          <property name="text">
+           <string>使用盲水印</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_blind_config">
+          <property name="title">
+           <string>盲水印 参数设置</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QLabel" name="label_blind_text">
+               <property name="text">
+                <string>水印内容</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_blind_text">
+               <property name="text">
+                <string>H1DDENADM1N@GitHub</string>
+               </property>
+               <property name="placeholderText">
+                <string>H1DDENADM1N@GitHub</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_blind_decode">
+          <property name="title">
+           <string>盲水印 解码结果</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="label_decode_blind_text">
+               <property name="text">
+                <string>水印内容</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_decode_blind_text">
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>

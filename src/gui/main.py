@@ -1,5 +1,4 @@
 import argparse
-import re
 import shutil
 from dataclasses import dataclass
 from pathlib import Path
@@ -27,12 +26,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.input_pic: Path = None
         self.output_pic: Path = None
         self.temp_pic: Path = None
+
+        self.checkBox_text.setDisabled(True)  # 打开图片后才允许编辑文字水印选项
+        self.disable_text_options()  # 打开图片后才允许编辑文字水印选项
+
         self.setup_signals()
 
     def setup_signals(self):
         self.action_open.triggered.connect(self.open_pic)
         self.action_save.triggered.connect(self.save_pic)
         self.action_save_as.triggered.connect(self.save_pic_as)
+        self.checkBox_text.stateChanged.connect(self.on_checkBox_text_changed)
 
         self.lineEdit_text.textChanged.connect(self.generate_temp_pic)
         self.spinBox_size.valueChanged.connect(self.generate_temp_pic)
@@ -43,6 +47,40 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.horizontalSlider_opacity.valueChanged.connect(self.generate_temp_pic)
         self.horizontalSlider_angle.valueChanged.connect(self.generate_temp_pic)
         self.horizontalSlider_quality.valueChanged.connect(self.generate_temp_pic)
+
+    def enable_text_options(self):
+        self.lineEdit_text.setEnabled(True)
+        self.spinBox_size.setEnabled(True)
+        self.spinBox_space.setEnabled(True)
+        self.horizontalSlider_red.setEnabled(True)
+        self.horizontalSlider_green.setEnabled(True)
+        self.horizontalSlider_blue.setEnabled(True)
+        self.horizontalSlider_opacity.setEnabled(True)
+        self.horizontalSlider_angle.setEnabled(True)
+        self.horizontalSlider_quality.setEnabled(True)
+
+    def disable_text_options(self):
+        self.lineEdit_text.setDisabled(True)
+        self.spinBox_size.setDisabled(True)
+        self.spinBox_space.setDisabled(True)
+        self.horizontalSlider_red.setDisabled(True)
+        self.horizontalSlider_green.setDisabled(True)
+        self.horizontalSlider_blue.setDisabled(True)
+        self.horizontalSlider_opacity.setDisabled(True)
+        self.horizontalSlider_angle.setDisabled(True)
+        self.horizontalSlider_quality.setDisabled(True)
+
+    def on_checkBox_text_changed(self):
+        if self.checkBox_text.isChecked():
+            self.enable_text_options()
+            self.generate_temp_pic()
+        else:
+            self.disable_text_options()
+            self.replace_temp_pic_with_input_pic()
+
+    def replace_temp_pic_with_input_pic(self):
+        shutil.copy(self.input_pic, self.temp_pic)
+        self.label_pic.setPixmap(QPixmap(str(self.temp_pic)))
 
     def open_pic(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -55,11 +93,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.input_pic = None
             return
 
-        if self.input_pic.exists():
-            self.groupBox_pic.setTitle(f"{self.input_pic.name}")
-            print("打开文件：", self.input_pic)
-            self.label_pic.setPixmap(QPixmap(str(self.input_pic)))
-            self.generate_temp_pic()
+        self.groupBox_pic.setTitle(f"{self.input_pic.name}")
+        print("打开文件：", self.input_pic)
+        self.label_pic.setPixmap(QPixmap(str(self.input_pic)))
+
+        self.checkBox_text.setEnabled(True)
+        self.enable_text_options()
+        self.generate_temp_pic()
 
     def save_pic(self):
         self.output_pic = PathsConfig.OUTPUT_PATH / self.input_pic.name

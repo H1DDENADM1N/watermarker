@@ -16,10 +16,11 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
-    QLineEdit, QMainWindow, QMenu, QMenuBar,
-    QSizePolicy, QSlider, QSpinBox, QStatusBar,
-    QToolBar, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QGroupBox, QHBoxLayout,
+    QLabel, QLineEdit, QMainWindow, QMenu,
+    QMenuBar, QSizePolicy, QSlider, QSpinBox,
+    QStatusBar, QTabWidget, QToolBar, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -34,8 +35,8 @@ class Ui_MainWindow(object):
         self.action_save_as.setObjectName(u"action_save_as")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout_4 = QVBoxLayout(self.centralwidget)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_6 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.groupBox_pic = QGroupBox(self.centralwidget)
         self.groupBox_pic.setObjectName(u"groupBox_pic")
         self.verticalLayout_2 = QVBoxLayout(self.groupBox_pic)
@@ -51,9 +52,26 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.label_pic)
 
 
-        self.verticalLayout_4.addWidget(self.groupBox_pic)
+        self.verticalLayout_6.addWidget(self.groupBox_pic)
 
-        self.groupBox_config = QGroupBox(self.centralwidget)
+        self.tabWidget = QTabWidget(self.centralwidget)
+        self.tabWidget.setObjectName(u"tabWidget")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
+        self.tabWidget.setSizePolicy(sizePolicy1)
+        self.Text = QWidget()
+        self.Text.setObjectName(u"Text")
+        self.verticalLayout_4 = QVBoxLayout(self.Text)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.checkBox_text = QCheckBox(self.Text)
+        self.checkBox_text.setObjectName(u"checkBox_text")
+        self.checkBox_text.setChecked(True)
+
+        self.verticalLayout_4.addWidget(self.checkBox_text)
+
+        self.groupBox_config = QGroupBox(self.Text)
         self.groupBox_config.setObjectName(u"groupBox_config")
         self.verticalLayout_3 = QVBoxLayout(self.groupBox_config)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -225,6 +243,66 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.groupBox_config)
 
+        self.tabWidget.addTab(self.Text, "")
+        self.Blind = QWidget()
+        self.Blind.setObjectName(u"Blind")
+        self.verticalLayout_5 = QVBoxLayout(self.Blind)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.checkBox_blind = QCheckBox(self.Blind)
+        self.checkBox_blind.setObjectName(u"checkBox_blind")
+        self.checkBox_blind.setChecked(True)
+
+        self.verticalLayout_5.addWidget(self.checkBox_blind)
+
+        self.groupBox_blind_config = QGroupBox(self.Blind)
+        self.groupBox_blind_config.setObjectName(u"groupBox_blind_config")
+        self.verticalLayout_7 = QVBoxLayout(self.groupBox_blind_config)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label_blind_text = QLabel(self.groupBox_blind_config)
+        self.label_blind_text.setObjectName(u"label_blind_text")
+
+        self.horizontalLayout.addWidget(self.label_blind_text)
+
+        self.lineEdit_blind_text = QLineEdit(self.groupBox_blind_config)
+        self.lineEdit_blind_text.setObjectName(u"lineEdit_blind_text")
+
+        self.horizontalLayout.addWidget(self.lineEdit_blind_text)
+
+
+        self.verticalLayout_7.addLayout(self.horizontalLayout)
+
+
+        self.verticalLayout_5.addWidget(self.groupBox_blind_config)
+
+        self.groupBox_blind_decode = QGroupBox(self.Blind)
+        self.groupBox_blind_decode.setObjectName(u"groupBox_blind_decode")
+        self.verticalLayout_8 = QVBoxLayout(self.groupBox_blind_decode)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label_decode_blind_text = QLabel(self.groupBox_blind_decode)
+        self.label_decode_blind_text.setObjectName(u"label_decode_blind_text")
+
+        self.horizontalLayout_2.addWidget(self.label_decode_blind_text)
+
+        self.lineEdit_decode_blind_text = QLineEdit(self.groupBox_blind_decode)
+        self.lineEdit_decode_blind_text.setObjectName(u"lineEdit_decode_blind_text")
+        self.lineEdit_decode_blind_text.setReadOnly(True)
+
+        self.horizontalLayout_2.addWidget(self.lineEdit_decode_blind_text)
+
+
+        self.verticalLayout_8.addLayout(self.horizontalLayout_2)
+
+
+        self.verticalLayout_5.addWidget(self.groupBox_blind_decode)
+
+        self.tabWidget.addTab(self.Blind, "")
+
+        self.verticalLayout_6.addWidget(self.tabWidget)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -249,6 +327,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
+        self.tabWidget.setCurrentIndex(0)
+
+
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
@@ -268,7 +349,8 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(shortcut)
         self.groupBox_pic.setTitle(QCoreApplication.translate("MainWindow", u"\u56fe\u7247\u6587\u4ef6\u540d", None))
         self.label_pic.setText("")
-        self.groupBox_config.setTitle(QCoreApplication.translate("MainWindow", u"\u53c2\u6570\u8bbe\u7f6e", None))
+        self.checkBox_text.setText(QCoreApplication.translate("MainWindow", u"\u4f7f\u7528\u6587\u5b57\u6c34\u5370", None))
+        self.groupBox_config.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u5b57\u6c34\u5370 \u53c2\u6570\u8bbe\u7f6e", None))
         self.label_text.setText(QCoreApplication.translate("MainWindow", u"\u6c34\u5370\u5185\u5bb9", None))
         self.lineEdit_text.setText(QCoreApplication.translate("MainWindow", u"H1DDENADM1N@GitHub", None))
         self.lineEdit_text.setPlaceholderText(QCoreApplication.translate("MainWindow", u"H1DDENADM1N@GitHub", None))
@@ -281,6 +363,15 @@ class Ui_MainWindow(object):
         self.label_opacity.setText(QCoreApplication.translate("MainWindow", u"\u4e0d\u900f\u660e\u5ea6", None))
         self.label_angle.setText(QCoreApplication.translate("MainWindow", u"\u6c34\u5370\u65cb\u8f6c\u89d2\u5ea6", None))
         self.label_quality.setText(QCoreApplication.translate("MainWindow", u"\u8f93\u51fa\u56fe\u50cf\u8d28\u91cf", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Text), QCoreApplication.translate("MainWindow", u"Text", None))
+        self.checkBox_blind.setText(QCoreApplication.translate("MainWindow", u"\u4f7f\u7528\u76f2\u6c34\u5370", None))
+        self.groupBox_blind_config.setTitle(QCoreApplication.translate("MainWindow", u"\u76f2\u6c34\u5370 \u53c2\u6570\u8bbe\u7f6e", None))
+        self.label_blind_text.setText(QCoreApplication.translate("MainWindow", u"\u6c34\u5370\u5185\u5bb9", None))
+        self.lineEdit_blind_text.setText(QCoreApplication.translate("MainWindow", u"H1DDENADM1N@GitHub", None))
+        self.lineEdit_blind_text.setPlaceholderText(QCoreApplication.translate("MainWindow", u"H1DDENADM1N@GitHub", None))
+        self.groupBox_blind_decode.setTitle(QCoreApplication.translate("MainWindow", u"\u76f2\u6c34\u5370 \u89e3\u7801\u7ed3\u679c", None))
+        self.label_decode_blind_text.setText(QCoreApplication.translate("MainWindow", u"\u6c34\u5370\u5185\u5bb9", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Blind), QCoreApplication.translate("MainWindow", u"Blind", None))
         self.menu_F.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
